@@ -13,9 +13,6 @@
       "src/test/support/*.ts",
       "src/test/hooks/*.ts"
     ],
-    "requireModule": [
-      "ts-node/register"
-    ],
     "format": [
       "progress-bar",
       "json:reports/cucumber-report.json",
@@ -34,9 +31,6 @@
       "src/test/steps/*.ts",
       "src/test/support/*.ts",
       "src/test/hooks/*.ts"
-    ],
-    "requireModule": [
-      "ts-node/register"
     ],
     "format": [
       "progress-bar",
