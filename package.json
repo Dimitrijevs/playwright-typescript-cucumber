@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "cucumber-js test"
+    "test": "cucumber-js test",
+    "test:failed": "cucumber-js -p rerun reports/@rerun.txt"
   },
   "keywords": [],
   "author": "",
@@ -14,6 +15,9 @@
     "@cucumber/cucumber": "^12.2.0",
     "@playwright/test": "^1.56.1",
     "@types/node": "^24.10.0",
+    "cross-env": "^10.1.0",
+    "dot-env": "^0.0.1",
+    "dotenv": "^17.2.3",
     "ts-node": "^10.9.2"
   }
 }

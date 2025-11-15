@@ -15,6 +15,34 @@
     ],
     "requireModule": [
       "ts-node/register"
-    ]
+    ],
+    "format": [
+      "progress-bar",
+      "json:reports/cucumber-report.json",
+      "rerun:reports/@rerun.txt"
+    ],
+    "parallel": 2
+  },
+  
+  "rerun": {
+    "formatOptions": {
+      "snippetInterface": "async-await"
+    },
+    "publishQuiet": true,
+    "dryRun": false,
+    "import": [
+      "src/test/steps/*.ts",
+      "src/test/support/*.ts",
+      "src/test/hooks/*.ts"
+    ],
+    "requireModule": [
+      "ts-node/register"
+    ],
+    "format": [
+      "progress-bar",
+      "json:reports/cucumber-report.json",
+      "rerun:reports/@rerun.txt"
+    ],
+    "parallel": 2
   }
 }
