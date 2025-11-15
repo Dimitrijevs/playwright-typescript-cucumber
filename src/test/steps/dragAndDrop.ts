@@ -1,8 +1,8 @@
 import { Given, Then, When } from "@cucumber/cucumber";
 
 import { expect } from "@playwright/test";
+import { page } from "../../hooks/hooks.ts";
 
-import { page } from "../hooks/hooks.ts";
 
 Given("User clicks on Drag and Drop link", async function () {
   await page.locator('a:has-text("Drag and Drop")').click();

@@ -1,6 +1,6 @@
 import { Given, setDefaultTimeout } from "@cucumber/cucumber";
 
-import { page } from "../hooks/hooks.ts";
+import { page } from "../../hooks/hooks.ts";
 
 setDefaultTimeout(10 * 1000);
 
