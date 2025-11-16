@@ -1,4 +1,3 @@
-// src/pages/LoginPage.ts
 import { type Page, type Locator } from "@playwright/test";
 import { BasePage } from "./BasePage.ts";
 

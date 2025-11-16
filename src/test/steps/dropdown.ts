@@ -4,22 +4,25 @@ import { expect } from "@playwright/test";
 
 import { page } from "../../hooks/hooks.ts";
 
+import { DropdownPage } from "../../pageObjectModels/DropdownPage.ts";
+
+let dropdownPage: DropdownPage;
+
 Given("User clicks on Dropdown link", async function () {
-  await page.locator('a:has-text("Dropdown")').click();
+
+  dropdownPage = new DropdownPage(page);
+
+  await dropdownPage.dropdownLink.click();
 });
 
 When("User selects {string}", async function (option: string) {
 
-  const dropDownList = page.locator('#dropdown');
-
-  await dropDownList.selectOption(option);
+  await dropdownPage.selectOption(option);
 });
 
 Then("the selected value should be {string}", async function (value: string) {
 
-  const dropDownList = page.locator('#dropdown');
-
-  const selectedOption = await dropDownList.inputValue();
-
-  expect(selectedOption).toBe(value);
+  const selectedValue = await dropdownPage.getSelectedValue();
+  
+  expect(selectedValue).toBe(value);
 });
