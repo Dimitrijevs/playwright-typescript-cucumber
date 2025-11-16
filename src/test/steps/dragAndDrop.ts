@@ -17,8 +17,10 @@ Given("User clicks on Drag and Drop link", async function () {
 
 When("User selects box A and drags it to box B", async function () {
 
-  await dragAndDropPage.draggableA
-    .dragTo(dragAndDropPage.draggableB);
+  let boxA = await dragAndDropPage.draggableA;
+  let boxB = await dragAndDropPage.draggableB;
+
+  await boxA.dragTo(boxB);
 });
 
 Then("Box A should be in the position of Box B", async function () {
