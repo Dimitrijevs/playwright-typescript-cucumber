@@ -3,31 +3,29 @@ import { Given, Then, When } from "@cucumber/cucumber";
 import { expect } from "@playwright/test";
 
 import { page } from "../../hooks/hooks.ts";
+import { LoginPage } from "../../pageObjectModels/LoginPage.ts";
+
+let loginPage: LoginPage;
 
 Given("User click on the login link", async function () {
-  await page.locator('a:has-text("Form Authentication")').click();
+
+  loginPage = new LoginPage(page);
+
+  await loginPage.goToLoginPage();
 });
 
-Given("User enter the username as {string}", async function (username) {
-  await page.locator('#username').fill(username);
-});
+When(
+  "User enter the username as {string} and User enter the password as {string}, User click on the login button",
+  async function (username: string, password: string) {
 
-Given("User enter the password as {string}", async function (password) {
-  await page.getByLabel('Password').fill(password);
-});
-
-When("User click on the login button", async function () {
-  await page.locator('i:has-text("Login")').click();
-});
+    await loginPage.login(username, password);
+  }
+);
 
 Then("Login should be success", async function () {
-  await expect(
-    page.locator('div.flash.success')
-  ).toBeVisible();
+  await expect(loginPage.successBanner).toBeVisible();
 });
 
-When("Login should fail", async function () {
-  await expect(
-    page.locator('div.flash.error')
-  ).toBeVisible();
+Then("Login should fail", async function () {
+  await expect(loginPage.errorBanner).toBeVisible();
 });

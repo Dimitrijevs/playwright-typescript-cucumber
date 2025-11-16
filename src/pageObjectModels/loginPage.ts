@@ -1,14 +1,14 @@
 // src/pages/LoginPage.ts
 import { type Page, type Locator } from "@playwright/test";
-import { BasePage } from "./basePage.ts";
+import { BasePage } from "./BasePage.ts";
 
 export class LoginPage extends BasePage {
   private readonly loginLink: Locator;
-  private readonly usernameInput: Locator;
-  private readonly passwordInput: Locator;
-  private readonly loginButton: Locator;
-  private readonly successBanner: Locator;
-  private readonly errorBanner: Locator;
+  readonly usernameInput: Locator;
+  readonly passwordInput: Locator;
+  readonly loginButton: Locator;
+  readonly successBanner: Locator;
+  readonly errorBanner: Locator;
 
   constructor(page: Page) {
     super(page);
@@ -21,7 +21,6 @@ export class LoginPage extends BasePage {
     this.errorBanner = this.page.locator(".flash.error");
   }
 
-  // Actions (public API)
   async goToLoginPage(): Promise<void> {
     await this.click(this.loginLink);
   }
@@ -30,14 +29,5 @@ export class LoginPage extends BasePage {
     await this.fill(this.usernameInput, username);
     await this.fill(this.passwordInput, password);
     await this.click(this.loginButton);
-    await this.waitForLoad();
-  }
-
-  async isSuccessBannerVisible(): Promise<boolean> {
-    return await this.isVisible(this.successBanner);
-  }
-
-  async isErrorBannerVisible(): Promise<boolean> {
-    return await this.isVisible(this.errorBanner);
   }
 }
